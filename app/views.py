@@ -8,7 +8,7 @@ from config import HALLS
 @app.route('/index')
 def index():
     reviews = models.Review.query.all()[::-1]
-    return render_template('index.html',
+    return render_template('new_index.html',
                             reviews=reviews,
                             halls=HALLS)
 
@@ -41,11 +41,18 @@ def hall(name):
         return redirect('/hall/'+name)
     reviews = models.Review.query.all()[::-1]
     reviews = filter(lambda review: review.location == name,reviews)
-    return render_template('reviews.html',
+    if len(reviews)>0:
+      average_score = sum([review.score for review in reviews])/(len(reviews)+0.0)
+      average_score = "%.1f"%average_score
+    else:
+      average_score = 0
+    return render_template('new_reviews.html',
                            form=form,
                            reviews = reviews,
                            location = name,
-                           halls = HALLS)
+                           average_score = average_score,
+                           image = HALLS[name],
+                           halls = HALLS.keys())
 
 """@app.route('/tower', methods=['GET', 'POST'])
 def tower():
