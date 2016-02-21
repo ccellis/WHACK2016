@@ -1,0 +1,25 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Reviews</h1>
+    <form action="" method="post" name="login">
+        {{ form.hidden_tag() }}
+        <p>
+            Yo put a review in:<br>
+            {{ form.review(size=100) }}
+            {% for error in form.review.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+        </p>
+        <p>Rate this shit: {{ form.rating }}</p>
+        <p><input type="submit" value="Sign In"></p>
+    </form>
+    <p>
+        {% for review in reviews %}
+            {{ review.review }}<br>
+            {{ review.score }}/5<br>
+            <br>
+        {% endfor %}
+    </p>
+{% endblock %}

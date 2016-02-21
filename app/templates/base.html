@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Wellesley Fresher</title>
+  </head>
+  <body>
+    <div>Wellesley Fresher: <a href="/index">Home</a> | <a href="/reviews">Submit Reviews</a></div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>
