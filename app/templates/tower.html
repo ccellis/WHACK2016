@@ -2,7 +2,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Reviews</h1>
+    <h1>Reviews of Tower</h1>
     <form action="" method="post" name="login">
         {{ form.hidden_tag() }}
         <p>
@@ -15,4 +15,11 @@
         <p>Rate this shit: {{ form.rating }}</p>
         <p><input type="submit" value="Submit"></p>
     </form>
+    <p>
+        {% for review in reviews %}
+            {{ review.review }}<br>
+            {{ review.score }}/5<br>
+            <br>
+        {% endfor %}
+    </p>
 {% endblock %}
