@@ -15,11 +15,4 @@
         <p>Rate this shit: {{ form.rating }}</p>
         <p><input type="submit" value="Sign In"></p>
     </form>
-    <p>
-        {% for review in reviews %}
-            {{ review.review }}<br>
-            {{ review.score }}/5<br>
-            <br>
-        {% endfor %}
-    </p>
 {% endblock %}

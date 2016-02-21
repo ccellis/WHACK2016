@@ -4,9 +4,13 @@
 {% block content %}
     <h1>Wellesley Fresher!</h1>
     <h2>Cause Wellesley Fresh has gotten stale</h2>
-    {% for post in posts %}
+    <p><span style="color:green; font-size: 175%;">Recent reviews!</span></p>
     <p>
-      {{ post.author.nickname }} says: <b>{{ post.body }}</b>
+        {% for review in reviews %}
+            <span style="font-size: 150%">{{ review.location }}</span><br>
+            {{ review.review }}<br>
+            {{ review.score }}/5<br>
+            <br>
+        {% endfor %}
     </p>
-    {% endfor %}
 {% endblock %}
